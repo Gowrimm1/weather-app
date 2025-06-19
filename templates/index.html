@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #d0e9f3; padding: 50px; }
+        input { padding: 10px; font-size: 18px; }
+        button { padding: 10px 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>☀️ Weather Forecast</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        {% if weather.error %}
+            <p>{{ weather.error }}</p>
+        {% else %}
+            <h2>{{ weather.city }}</h2>
+            <p>{{ weather.temperature }}°C</p>
+            <p>{{ weather.description }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
